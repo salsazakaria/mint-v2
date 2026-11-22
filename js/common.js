@@ -30,13 +30,13 @@
   /* ---------- mobile menu ---------- */
   const menu = document.getElementById('mobile-menu');
   if (menu) {
-    const openBtn = document.querySelector('[data-menu-open]');
+    const openBtns = document.querySelectorAll('[data-menu-open]');
     const set = (open) => {
       menu.dataset.open = String(open);
       document.documentElement.style.overflow = open ? 'hidden' : '';
-      if (openBtn) openBtn.setAttribute('aria-expanded', String(open));
+      openBtns.forEach((b) => b.setAttribute('aria-expanded', String(open)));
     };
-    openBtn && openBtn.addEventListener('click', () => set(true));
+    openBtns.forEach((b) => b.addEventListener('click', () => set(true)));
     menu.querySelectorAll('[data-menu-close]').forEach((b) => b.addEventListener('click', () => set(false)));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
   }
