@@ -37,7 +37,8 @@
   }
 
   /* ---------- horizontal scrollers (sm) ---------- */
-  .hscroll { @apply flex overflow-x-auto snap-x snap-mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+  /* overflow-y: hidden stops the row from scrolling vertically while card reveal animations hang below it */
+  .hscroll { @apply flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory; scrollbar-width: none; overscroll-behavior-x: contain; touch-action: pan-x pan-y; }
   .hscroll::-webkit-scrollbar { display: none; }
   .hscroll > * { @apply snap-start; }
 
