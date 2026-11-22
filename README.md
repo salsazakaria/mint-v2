@@ -1,0 +1,65 @@
+# MINT Modeler v2 — website
+
+Static site built with HTML, Tailwind CSS (v3, compiled) and plain JavaScript.
+It was built from the Figma file `MINT-Design` (page "Vibe Code").
+
+| Page | File | Figma |
+|---|---|---|
+| Landing | `index.html` | landing-page-lg / -sm / lg:menu |
+| Get started | `get-started.html` | quick-onboarding-lg / -sm |
+| Brand site | `brand.html` | brand-site-lg / -sm |
+| Dashboard | `dashboard.html` | main-dashboard-lg (expanded + collapsed) / -sm / sm:state(menu) |
+
+## Run
+
+```bash
+npm install          # Tailwind CLI and font packages (dev only)
+npm run build        # src/input.css -> dist/styles.css
+npm run dev          # rebuild CSS on change
+npx serve .          # or any static server, then open http://localhost:3000
+```
+
+`dist/styles.css` is already compiled, so the pages work without running a build.
+Run `npm run build` whenever you add Tailwind classes to the HTML or JS.
+
+## Responsive
+
+- **sm**: under 1024px (Figma 402 frames). **lg**: 1024px and up (Figma 1512 frames).
+- On sm, *How it works* and *Built for you* scroll horizontally with snapping. *Built for you* also scrolls on lg, where the cards run past the right edge as in Figma.
+- On sm, the ship-faster video and the footer logo are hidden, as in Figma.
+
+## Interactive pieces
+
+- **Hero** (`js/hero-animation.js`, carried over from the earlier mint-gg site): a cursor-reactive pixel grid.
+  - Dim square pixels light up in white and Mint red around the cursor and leave a fading trail.
+  - With no mouse (touch devices), a slow ambient shimmer plays instead.
+  - The `.hero-mask` class in `src/input.css` fades the grid at the bottom and softens it behind the headline.
+- **Final CTA** (`FlowScene`): a moving, Base-style dither field that bends toward the cursor.
+- The hero and CTA canvases pause when off screen. With `prefers-reduced-motion`, they render one static frame.
+- **Showcase** (`js/landing.js`): an endlessly looping coverflow carousel. The centre card is full size and the side cards scale to 0.759, which is 803/1058 from Figma. It supports drag, swipe, trackpad, arrow buttons, keyboard and dots on mobile.
+- **Add to Claude** dropdown (`js/common.js`): lists the agents from Figma. Each row shows a copy icon that expands to "Copy setup prompt" on hover. On mobile the menu sits centred under the CTA, 16px from the screen edges.
+- **Dashboard**:
+  - The sidebar collapses to 70px on lg. Use the toggle or Cmd/Ctrl+B. The state is remembered in localStorage.
+  - On sm, the sidebar is an off-canvas drawer.
+  - The asset tabs update the empty state.
+  - The profile card opens Account, Light/Dark Theme (remembered in localStorage) and Sign out.
+
+## Showcase demo videos
+
+The ten demos are stored in `assets/showcase/` as `demo-01.mp4` … `demo-10.mp4`, each with a `.jpg` poster.
+- The videos are 1280px wide with no audio track.
+- Each slide in `index.html` has `data-video` and `data-poster`.
+- Only the centre slide gets a `<video>` element, and only once the section is on screen. The others show their poster image.
+- When a card leaves the centre, its video is unloaded.
+
+To add or replace a demo, re-encode it first:
+`ffmpeg -i in.mp4 -an -vf scale=1280:-2 -c:v libx264 -crf 27 -movflags +faststart demo-11.mp4`
+Then add a slide.
+
+Every video on the site is muted. The `muted` attribute is set and `js/common.js` also forces it. The two source videos that had audio tracks (`modeler-demo-web-optimized.mp4` and `mint-brandsite.mp4`) had their audio removed.
+
+## TODO / placeholders
+
+- Setup prompt text: `setupPrompt()` in `js/common.js`. It currently points to docs.mint.gg.
+- Dashboard "Refresh" is simulated. Wire it to the assets API.
+- Dashboard "Account" link (`data-todo="account-page"`) has no page yet.
