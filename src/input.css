@@ -158,3 +158,9 @@ html[data-theme="light"] .widget-menu .copy-pill { background: #ffffff; border-c
 html[data-theme="light"] .widget-menu .copy-pill img { filter: invert(1); }
 html[data-theme="light"] .widget-menu .copy-label { color: #0f0f11; }
 html[data-theme="light"] .sidebar p.text-\[\#6d6a69\] { color: #8a8784; }
+
+/* ---------- returning visitors (js/returning-visitor.js) ---------- */
+.rv-eyebrow { display: none; }
+html.is-returning .rv-eyebrow { display: inline-flex; }
+/* hide only the swappable elements until the swap (or the 1.5 s failsafe) runs */
+html.is-returning:not(.rv-ready) [data-rv] { visibility: hidden; }

@@ -8,6 +8,8 @@
   <link rel="icon" href="assets/brandsite/mint-favicon-white-on-red-512.svg" type="image/svg+xml" />
   <link rel="preload" href="assets/fonts/geist-sans-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="dist/styles.css" />
+  <!-- returning-visitor copy: decides before first paint, swaps on DOMContentLoaded (see file header) -->
+  <script src="js/returning-visitor.js"></script>
 </head>
 <body class="bg-black text-white overflow-x-hidden">
 
@@ -55,21 +57,27 @@
   <!-- hero copy -->
   <div class="pointer-events-none absolute inset-x-0 top-[173px] z-20 flex flex-col items-center px-[30px] lg:top-[245px]">
     <div data-dither-safe class="pointer-events-auto flex flex-col items-center">
-      <div class="flex h-[36.3px] items-center rounded-btn border border-mint-line bg-black/40 px-3 backdrop-blur-sm">
-        <span class="flex items-center gap-2">
-          <img src="assets/img/badge-wordmark.svg" width="27.89" height="9.966" alt="mint" />
-          <img src="assets/img/badge-divider.svg" class="h-[8.8px] w-px" alt="" />
-          <img src="assets/img/badge-modeler.svg" width="43.292" height="9.257" alt="Modeler" />
-        </span>
+      <div class="flex items-center gap-2">
+        <div class="flex h-[36.3px] items-center rounded-btn border border-mint-line bg-black/40 px-3 backdrop-blur-sm">
+          <span class="flex items-center gap-2">
+            <img src="assets/img/badge-wordmark.svg" width="27.89" height="9.966" alt="mint" />
+            <img src="assets/img/badge-divider.svg" class="h-[8.8px] w-px" alt="" />
+            <img src="assets/img/badge-modeler.svg" width="43.292" height="9.257" alt="Modeler" />
+          </span>
+        </div>
+        <!-- returning visitors only (shown by html.is-returning) -->
+        <p class="rv-eyebrow h-[36.3px] items-center gap-2 rounded-btn border border-mint-line bg-black/40 px-3 text-[13px] font-medium tracking-[-0.13px] text-[#c9c7c3] backdrop-blur-sm">
+          <span class="size-1.5 rounded-full bg-[#7b7b7b]" aria-hidden="true"></span>Welcome back
+        </p>
       </div>
-      <h1 class="mt-[19px] max-lg:whitespace-nowrap text-center font-medium capitalize text-[38px] leading-[42px] tracking-[-2.28px] lg:mt-6 lg:text-[62px] lg:leading-[62.275px] lg:tracking-[-3.72px]">
+      <h1 data-rv="hero-headline" class="mt-[19px] max-lg:whitespace-nowrap text-center font-medium capitalize text-[38px] leading-[42px] tracking-[-2.28px] lg:mt-6 lg:text-[62px] lg:leading-[62.275px] lg:tracking-[-3.72px]">
         <span class="text-mint-red">Production-ready</span> 3D<br />Your agent can ship.
       </h1>
-      <p class="mt-6 max-w-[321px] text-center font-medium text-[14px] leading-[2.2] text-mint-caption lg:max-w-none">
+      <p data-rv="hero-description" class="mt-6 max-w-[321px] text-center font-medium text-[14px] leading-[2.2] text-mint-caption lg:max-w-none">
         Clean topology, true scale, every part and material separate. Built by the team behind 250M+ views of 3D content.
       </p>
       <div class="mt-6 flex items-center gap-2 lg:relative">
-        <a href="get-started.html" class="btn-light">Get Started</a>
+        <a href="get-started.html" data-rv="hero-cta" class="btn-light w-auto min-w-[124px] whitespace-nowrap">Get Started</a>
         <div class="lg:relative">
           <button type="button" class="btn-ghost pr-2.5" data-widget-toggle aria-expanded="false" aria-controls="widget-menu">
             <span class="flex items-center gap-1.5">
@@ -161,7 +169,7 @@
     <div class="px-4 lg:px-[72px]">
       <div class="reveal flex flex-col gap-3">
         <p class="eyebrow">[ How it works ]</p>
-        <h2 class="h-section">From prompt<br />to <span class="dim">production</span></h2>
+        <h2 data-rv="how-heading" class="h-section">From prompt<br />to <span class="dim">production</span></h2>
       </div>
     </div>
     <div class="hscroll mt-8 gap-3 scroll-px-4 px-4 lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-[18px] lg:overflow-visible lg:px-[72px]">
@@ -452,8 +460,8 @@
             <img class="absolute left-[36.3px] top-[8.8px]" src="assets/img/cta-wordmark.svg" width="37.766" height="13.495" alt="mint" />
           </span>
         </div>
-        <h2 class="font-semibold capitalize text-[38px] leading-[42px] tracking-[-2.28px] lg:text-[62px] lg:leading-[62.275px] lg:tracking-[-3.72px]">Give your agent<br />a 3D expert</h2>
-        <p class="max-w-[342px] text-[14px] leading-[2.2] lg:max-w-none lg:whitespace-nowrap">Production-ready models from one prompt: clean topology, true scale, every part and material separate.</p>
+        <h2 data-rv="cta-heading" class="font-semibold capitalize text-[38px] leading-[42px] tracking-[-2.28px] lg:text-[62px] lg:leading-[62.275px] lg:tracking-[-3.72px]">Give your agent<br />a 3D expert</h2>
+        <p data-rv="cta-subtext" class="max-w-[342px] text-[14px] leading-[2.2] lg:max-w-none lg:whitespace-nowrap">Production-ready models from one prompt: clean topology, true scale, every part and material separate.</p>
         <a href="get-started.html" class="btn-light">Get Started</a>
       </div>
     </div>

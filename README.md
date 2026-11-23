@@ -63,3 +63,20 @@ Every video on the site is muted. The `muted` attribute is set and `js/common.js
 - Setup prompt text: `setupPrompt()` in `js/common.js`. It currently points to docs.mint.gg.
 - Dashboard "Refresh" is simulated. Wire it to the assets API.
 - Dashboard "Account" link (`data-todo="account-page"`) has no page yet.
+
+## Returning visitors
+
+The landing page (`index.html`) shows different copy to people coming back within a week. The logic lives in `js/returning-visitor.js`, which is loaded synchronously in `<head>`.
+
+- **First visit:** the script stores a timestamp in `localStorage['mint_first_visit']`.
+- **Returning:** a new browser session (decision cached in `sessionStorage['mint_visit_session']`, so a reload doesn't flip it) **and** a first visit less than 7 days ago **and** `isLoggedIn()` is false.
+- **After 7 days:** the timestamp is overwritten with now and the default copy shows again.
+- **Blocked storage or any error:** default copy.
+- **How the swap works:**
+  - Default copy stays in the HTML. Swappable elements carry `data-rv="…"`, and the returning copy lives in the `COPY` map in the script.
+  - `html.is-returning` hides only those elements until `rv-ready` is set. A 1.5 s timeout reveals them as a failsafe.
+- **TODO(auth):** `isLoggedIn()` currently returns `false`. Wire it to the real session (cookie or token) once auth exists.
+- **Test params:** each one logs the decision to the console.
+  - `?returning=1` forces the returning view.
+  - `?returning=0` forces the default view.
+  - `?reset-visit` clears both keys.
