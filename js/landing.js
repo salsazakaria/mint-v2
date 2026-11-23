@@ -197,3 +197,26 @@
     measure();
   }
 })();
+
+/* ---------- "Built for you" row: prev / next buttons (lg only) ---------- */
+(() => {
+  const row = document.querySelector('[data-built-row]');
+  const prev = document.querySelector('[data-built-prev]');
+  const next = document.querySelector('[data-built-next]');
+  if (!row || !prev || !next) return;
+  const step = () => {
+    const card = row.querySelector('article');
+    const gap = parseFloat(getComputedStyle(row).columnGap) || 0;
+    return card ? card.getBoundingClientRect().width + gap : row.clientWidth * 0.8;
+  };
+  const update = () => {
+    const max = row.scrollWidth - row.clientWidth;
+    prev.disabled = row.scrollLeft <= 2;
+    next.disabled = row.scrollLeft >= max - 2;
+  };
+  prev.addEventListener('click', () => row.scrollBy({ left: -step(), behavior: 'smooth' }));
+  next.addEventListener('click', () => row.scrollBy({ left: step(), behavior: 'smooth' }));
+  row.addEventListener('scroll', update, { passive: true });
+  new ResizeObserver(update).observe(row);
+  update();
+})();

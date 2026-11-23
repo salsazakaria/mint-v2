@@ -297,11 +297,21 @@
        BUILT FOR YOU
        ================================================================ -->
   <section id="built-for" class="pt-[72px] lg:pt-[118px]">
-    <div class="reveal flex flex-col gap-3 px-4 lg:px-[72px]">
-      <p class="eyebrow">[ Multi-Purpose 3D Tool ]</p>
-      <h2 class="h-section">Built for <span class="dim">You.</span></h2>
+    <div class="flex items-center gap-8 px-4 lg:px-[72px]">
+      <div class="reveal flex flex-1 flex-col gap-3">
+        <p class="eyebrow">[ Multi-Purpose 3D Tool ]</p>
+        <h2 class="h-section">Built for <span class="dim">You.</span></h2>
+      </div>
+      <div class="hidden items-center gap-2 lg:flex">
+        <button type="button" data-built-prev class="grid h-[84px] w-[83px] place-items-center rounded-full border border-mint-line transition hover:bg-white/5 disabled:opacity-30" aria-label="Previous use case">
+          <img src="assets/img/icons/chev-left.svg" width="24" height="24" alt="" />
+        </button>
+        <button type="button" data-built-next class="grid h-[84px] w-[83px] place-items-center rounded-full border border-mint-line transition hover:bg-white/5 disabled:opacity-30" aria-label="Next use case">
+          <img src="assets/img/icons/chev-right.svg" width="24" height="24" alt="" />
+        </button>
+      </div>
     </div>
-    <div class="hscroll mt-8 gap-3 scroll-px-4 px-4 lg:gap-[18px] lg:scroll-px-[72px] lg:px-[72px]" data-drag-scroll>
+    <div data-built-row class="hscroll mt-8 gap-3 scroll-px-4 px-4 lg:gap-[18px] lg:scroll-px-[72px] lg:px-[72px]" data-drag-scroll>
       <!-- 01 -->
       <article class="relative h-[329.4px] w-[255.7px] shrink-0 overflow-hidden rounded-card bg-[#ec190c] lg:h-[572px] lg:w-[444px]">
         <video class="vfill" data-autoplay muted loop playsinline preload="none" src="assets/landing/mint-robotics-simulation.mp4"></video>
