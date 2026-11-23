@@ -75,7 +75,7 @@ The landing page (`index.html`) shows different copy to people coming back withi
 - **How the swap works:**
   - Default copy stays in the HTML. Swappable elements carry `data-rv="…"`, and the returning copy lives in the `COPY` map in the script.
   - `html.is-returning` hides only those elements until `rv-ready` is set. A 1.5 s timeout reveals them as a failsafe.
-- **TODO(auth):** `isLoggedIn()` currently returns `false`. Wire it to the real session (cookie or token) once auth exists.
+- **TODO(auth):** `isLoggedIn()` currently returns `false`. Step-by-step handoff, with constraints and tests, is in [`AGENTS.md`](AGENTS.md).
 - **Test params:** each one logs the decision to the console.
   - `?returning=1` forces the returning view.
   - `?returning=0` forces the default view.
