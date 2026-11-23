@@ -1,5 +1,7 @@
 # MINT Modeler v2 — website
 
+**Live site:** https://mint-gg-v2.netlify.app/
+
 Static site built with HTML, Tailwind CSS (v3, compiled) and plain JavaScript.
 It was built from the Figma file `MINT-Design` (page "Vibe Code").
 
