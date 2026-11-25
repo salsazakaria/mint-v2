@@ -29,7 +29,7 @@
         <a class="nav-link" href="https://mint.gg/guides" target="_blank" rel="noopener">Guides</a>
         <a class="nav-link" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Documentation</a>
       </div>
-      <a href="dashboard.html" class="btn-light">Sign In</a>
+      <a data-auth-open href="dashboard.html" class="btn-light">Sign In</a>
     </div>
   </nav>
 
@@ -78,8 +78,8 @@
     <a class="border-b border-white/10 py-5 text-[32px] font-medium tracking-[-1.6px]" href="https://docs.mint.gg/developers/modeler" target="_blank" rel="noopener">Documentation</a>
   </nav>
   <div class="mt-auto mb-8 flex gap-2">
-    <a href="get-started.html" class="btn-light h-12 flex-1">Get Started</a>
-    <a href="dashboard.html" class="btn-ghost h-12 flex-1">Sign In</a>
+    <a data-auth-open data-menu-close href="get-started.html" class="btn-light h-12 flex-1">Get Started</a>
+    <a data-auth-open data-menu-close href="dashboard.html" class="btn-ghost h-12 flex-1">Sign In</a>
   </div>
 </div>
 
@@ -163,5 +163,6 @@
 
 
 <script src="js/common.js"></script>
+<script src="js/auth-modal.js"></script>
 </body>
 </html>

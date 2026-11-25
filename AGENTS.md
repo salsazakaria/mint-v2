@@ -6,6 +6,15 @@ This is a static site: plain HTML, Tailwind v3 and vanilla JS, with no framework
 - **Deploy:** every push to `main` auto-deploys to https://mint-gg-v2.netlify.app.
 - **Breakpoint:** `lg` = 1024px. Check every change at both a phone width (e.g. 402px) and a desktop width.
 
+## Open task: real sign-in
+
+The sign-in modal (`js/auth-modal.js`) is UI only for now:
+
+- Google sends people to `get-started.html`.
+- The email form only shows a success state.
+
+Both spots are marked `TODO(auth)`. When real auth lands, it should also set the signed-in flag that `isLoggedIn()` below reads.
+
 ## Open task: wire up `isLoggedIn()` once auth exists
 
 **Where:** `js/returning-visitor.js`, function `isLoggedIn()`. It currently returns `false` and is marked `TODO(auth)`.

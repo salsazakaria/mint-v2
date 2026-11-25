@@ -82,3 +82,13 @@ The landing page (`index.html`) shows different copy to people coming back withi
   - `?returning=1` forces the returning view.
   - `?returning=0` forces the default view.
   - `?reset-visit` clears both keys.
+
+## Sign-in modal
+
+Every **Get Started** and **Sign In** button on the landing and brand pages (`[data-auth-open]`) opens the "Welcome to mint" modal. It was ported from [mint-auth](https://github.com/salsazakaria/mint-auth). The code is in `js/auth-modal.js`, the styles are the `.am-*` classes in `src/input.css`, and the assets are in `assets/img/auth/`.
+
+- **Continue with google:** goes to `get-started.html` (onboarding). `GOOGLE_REDIRECT` at the top of the script sets where it goes. **TODO(auth):** point it at the real Google OAuth URL.
+- **Email + Continue:** checks the address and shows "Check your inbox ✓". It's a demo and nothing is sent yet. **TODO(auth).**
+- **Closing:** the ×, Escape, or a click outside the card.
+- **No-JS fallback:** the buttons are still normal links, so ctrl-click or cmd-click opens their old page in a new tab, and without JS they work as before.
+- **Sound:** set `SOUND = false` in the script to turn off the UI click sounds.
